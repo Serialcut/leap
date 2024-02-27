@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <title>Leap</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game" aria-label="Espace de jeu">
+        <div class="game__player" aria-label="Joueur"></div>
+        <div class="game__obstacles" aria-label="Obstacles"></div>
+        <div class="plateforme"></div>
+        <div class="game__score">Score : <span id="score">0</span></div>
+		<div class="game__level">Niveau : <span id="level">1</span></div>
+		<div class="power-ups" aria-label="Power-ups"></div>
+		<div class="lives" aria-label="Vies"></div>
+    </div>
+	<div class="game-modes">
+    <button id="normal-mode">Mode Normal</button>
+    <button id="timed-mode">Mode Chronométré</button>
+</div>
+<!-- Ajoutez des sélecteurs pour le personnage et le thème -->
+<div class="customization">
+    <label for="character-select">Choisir le personnage :</label>
+    <select id="character-select">
+        <option value="character1">Personnage 1</option>
+        <option value="character2">Personnage 2</option>
+        <!-- Ajoutez d'autres options de personnages selon vos besoins -->
+    </select>
+
+    <label for="theme-select">Choisir le thème :</label>
+    <select id="theme-select">
+        <option value="theme1">Thème 1</option>
+        <option value="theme2">Thème 2</option>
+        <!-- Ajoutez d'autres options de thèmes selon vos besoins -->
+    </select>
+</div>
+<!-- Ajoutez des div pour les écrans de démarrage, d'instructions et de fin de jeu -->
+<div id="start-screen" class="screen">
+    <h1>Bienvenue à Leap!</h1>
+    <button id="start-button">Commencer</button>
+</div>
+
+<div id="instructions-screen" class="screen">
+    <h2>Instructions :</h2>
+    <p>Votre objectif est d'éviter les obstacles en sautant avec la touche espace.</p>
+    <p>Collectez des power-ups pour améliorer vos compétences et des vies pour survivre plus longtemps.</p>
+    <button id="play-button">Jouer</button>
+</div>
+
+<div id="game-over-screen" class="screen">
+    <h2>Fin de partie</h2>
+    <p>Votre score final est : <span id="final-score">0</span></p>
+    <button id="restart-button">Recommencer</button>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

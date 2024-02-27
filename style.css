@@ -1,0 +1,276 @@
+/* Variables */
+:root {
+    --bg-color: #282c34;
+    --player-color: #e06c75;
+    --obstacle-color: #98c379;
+    --platform-color: #56b6c2;
+    --score-color: #dcdfe4;
+    --font-family: 'JetBrains Mono', monospace;
+    --orange: #ffb347;
+    --light-red: #ff6961;
+    --light-green: #77dd77;
+    --light-gray: #aec6cf;
+    --light-purple: #b19cd9;
+    --light-blue: #87ceeb;
+    --gold: #ffd700;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color);
+}
+
+.game {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    background-color: #282c34;
+    overflow: hidden;
+}
+
+.game__player, .personnage {
+    position: absolute;
+    bottom: 10px;
+    left: 50px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--player-color);
+    border-radius: 50%;
+    animation: jump 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+}
+
+.plateforme {
+    width: 100%;
+    height: 20px;
+    background-color: var(--platform-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.game__obstacles {
+    width: 30px;
+    height: 60px;
+    background-color: var(--obstacle-color);
+    position: absolute;
+    right: -30px;
+    bottom: 50px;
+    animation: moveObstacle 5s linear infinite;
+}
+
+.game__score {
+    font-family: var(--font-family);
+    color: var(--score-color);
+    font-size: 1.5rem;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
+
+.game__level {
+    font-family: var(--font-family);
+    color: var(--score-color);
+    font-size: 1.5rem;
+    position: fixed;
+    top: 50px;
+    left: 20px;
+}
+@keyframes jump {
+    0% { bottom: 10px; }
+    30% { bottom: 150px; }
+    50% { bottom: 150px; }
+    80% { bottom: 10px; }
+    100% { bottom: 10px; }
+}
+
+@keyframes moveObstacle {
+    0% { right: -30px; }
+    100% { right: 100%; }
+}
+
+/* Styles pour les nouveaux types d'obstacles */
+.game__obstacles.moving { background-color: var(--orange); }
+.game__obstacles.changing { background-color: var(--light-red); }
+.game__obstacles.destroyable { background-color: var(--light-green); }
+.game__obstacles.multi-level { background-color: var(--light-gray); }
+.game__obstacles.width-height { background-color: var(--light-purple); }
+.game__obstacles.temporal { background-color: var(--light-blue); }
+.game__obstacles.interactive { background-color: var(--gold); }
+
+/* Styles pour les power-ups */
+.power-ups {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+}
+
+.power-up {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    background-color: yellow;
+    border-radius: 50%;
+}
+
+/* Styles pour les vies ou les boucliers */
+.lives {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+}
+
+.life {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+/* Styles pour les boutons de sélection de mode de jeu */
+.game-modes {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.game-modes button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    background-color: #4CAF50; /* Vert */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.game-modes button:hover {
+    background-color: #45a049; /* Vert plus foncé au survol */
+}
+@keyframes jump-animation {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-50px); }
+    100% { transform: translateY(0); }
+}
+
+.game__player.jump {
+    animation: jump-animation 0.5s ease;
+}
+/* Styles pour les sélecteurs de personnage et de thème */
+.customization {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.customization label {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.customization select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.customization select:focus {
+    outline: none;
+    border-color: #4CAF50; /* Vert */
+}
+/* Styles pour les écrans */
+.screen {
+    display: none;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.screen h1, .screen h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.screen p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.screen button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50; /* Vert */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.screen button:hover {
+    background-color: #45a049; /* Vert plus foncé au survol */
+}
+/* Styles spécifiques pour les appareils mobiles */
+
+/* Ajustement de la taille des éléments pour les petits écrans */
+@media only screen and (max-width: 600px) {
+    .game {
+        width: 90%;
+        height: 300px;
+    }
+
+    .game__player, .personnage {
+        width: 30px;
+        height: 30px;
+        bottom: 5px;
+        left: 20px;
+    }
+
+    .plateforme {
+        height: 10px;
+    }
+
+    .game__obstacles {
+        width: 20px;
+        height: 40px;
+    }
+
+    .game__score {
+        font-size: 1rem;
+    }
+
+    .screen h1, .screen h2 {
+        font-size: 20px;
+    }
+
+    .screen p {
+        font-size: 16px;
+    }
+
+    .screen button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+/* Ajustement de la disposition pour une meilleure expérience tactile */
+@media only screen and (pointer: coarse) {
+    .game {
+        overflow: hidden; /* Désactiver le défilement horizontal sur les écrans tactiles */
+    }
+
+    .game__player, .personnage {
+        cursor: pointer; /* Afficher un curseur pour les actions tactiles */
+    }
+}
